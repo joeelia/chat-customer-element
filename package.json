@@ -1,0 +1,23 @@
+{
+  "name": "chat-ce",
+  "private": true,
+  "version": "1.0.0",
+  "type": "commonjs",
+  "description": "Chat Web Component with Tailwind CSS",
+  "main": "dist/index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "node build.js",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.1.4"
+  }
+}
