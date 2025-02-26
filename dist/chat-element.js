@@ -34,7 +34,7 @@ const a = '*,:before,:after{--tw-border-spacing-x: 0;--tw-border-spacing-y: 0;--
       this.isOpen ? (this.shadowRoot.innerHTML = `
           <div class="fixed bottom-0 right-0 mb-4 mr-4 w-96 rounded-lg bg-white shadow-2xl transition-all">
             <div class="flex items-center justify-between bg-blue-500 p-4 rounded-t-lg">
-              <h2 class="text-xl font-bold text-white">Chat Box</h2>
+              <h2 class="text-xl font-bold text-white">Chat Bdddox</h2>
               <button 
                 class="text-white hover:text-gray-200 transition-colors"
                 aria-label="Close chat"
