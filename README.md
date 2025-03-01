@@ -21,7 +21,10 @@ The development server will start at `http://localhost:3000` with hot module rel
 pnpm build
 ```
 
-This will create a `dist` folder containing `chat-element.js` which you can upload to your CDN.
+This will create a `dist` folder containing:
+- `chat-element.js` - The main component file to be hosted on your CDN
+- `index.html` - A demo page showing the chat widget in action
+- `embed-code.html` - A page with the embed code and copy button for easy integration
 
 ## Usage
 
@@ -29,24 +32,12 @@ Add the following script to your website's `<head>` section:
 
 ```html
 <script type="text/javascript">
-  window.$chat = [];
-  window.CHAT_TEAM_ID = "YOUR-TEAM-ID";
+  // Set your team ID
+  window.AI_CHAT_TEAM_ID = "YOUR-TEAM-ID";
+  
   (function() {
-    // Configure the chat
-    window.$chat.push(['config', {
-      teamId: window.CHAT_TEAM_ID,
-      wsUrl: 'wss://your-websocket-server.com',
-      title: 'Support Chat',
-      position: 'bottom-right',
-      theme: {
-        primary: 'bg-indigo-600',
-        hover: 'bg-indigo-700'
-      }
-    }]);
-
-    // Load the script
-    d = document;
-    s = d.createElement("script");
+    const d = document;
+    const s = d.createElement("script");
     s.src = "https://your-domain.com/chat-element.js";
     s.type = "module";
     s.async = 1;
@@ -55,28 +46,36 @@ Add the following script to your website's `<head>` section:
 </script>
 ```
 
-Replace `https://your-domain.com/chat-element.js` with the actual URL where you've hosted the chat component.
+Replace `YOUR-TEAM-ID` with your actual team ID and `https://your-domain.com/chat-element.js` with the actual URL where you've hosted the chat component.
 
-## Configuration Options
+## How It Works
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `teamId` | string | `null` | Your team's unique identifier |
-| `wsUrl` | string | `'wss://echo.websocket.org'` | WebSocket server URL |
-| `title` | string | `'Chat Box'` | Title displayed in the chat header |
-| `position` | string | `'bottom-right'` | Widget position (`'bottom-right'`, `'bottom-left'`, `'top-right'`, `'top-left'`) |
-| `theme.primary` | string | `'bg-blue-500'` | Primary color using Tailwind classes |
-| `theme.hover` | string | `'bg-blue-600'` | Hover color using Tailwind classes |
+1. The chat widget automatically fetches configuration from `https://v3.notthebestagency.com/api/teams/{teamId}/business-details?chatbot`
+2. It uses the configuration to customize the appearance (title, position, colors)
+3. Messages are sent to and received from `https://v3.notthebestagency.com/api/chatbot/{teamId}` with streaming responses
+4. The widget displays with a floating button that expands into a chat interface when clicked
+5. Responses are streamed in real-time with a blinking cursor indicator
 
 ## Features
 
-- 🎨 Customizable theme using Tailwind CSS classes
+- 🎨 Automatically themed based on your team's configuration
 - 📱 Responsive design
 - 🔒 Shadow DOM for style isolation
-- 🔌 WebSocket integration
 - 🚀 Lightweight and performant
 - 🔥 Hot Module Reload during development
-- 📦 Easy to embed
+- 📦 Easy to embed with just your team ID
+- 💬 Real-time streaming responses
+- 🧠 Maintains conversation context
+
+## Configuration
+
+The widget automatically loads configuration from the API based on your team ID. The following settings are supported:
+
+| Property | Description |
+|----------|-------------|
+| `title` | Title displayed in the chat header |
+| `position` | Widget position (`'bottom-right'`, `'bottom-left'`, `'top-right'`, `'top-left'`) |
+| `hexCode` | Primary color for the chat widget (e.g., `'#F60'`) |
 
 ## Browser Support
 

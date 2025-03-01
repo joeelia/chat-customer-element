@@ -4,19 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat Component Demo</title>
-    <script type="module" src="./chat-element.js"></script>
+    <script type="text/javascript">
+  window.AI_CHAT_TEAM_ID = "Fls9e8qMngIGfSaVVxLtf";
+  
+  (function() {
+    const d = document;
+    const s = d.createElement("script");
+    s.src = "chat-element.js";
+    s.type = "module";
+    s.async = 1;
+    d.getElementsByTagName("head")[0].appendChild(s);
+  })();
+</script>
     <style>
       body {
         margin: 0;
         min-height: 100vh;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         background-color: #f3f4f6;
+        padding: 20px;
       }
     </style>
   </head>
   <body>
     <h1 style="font-family: system-ui; color: #374151;">Chat Widget Demo Page</h1>
+    <p style="font-family: system-ui; color: #374151; text-align: center; max-width: 600px; margin: 0 auto;">
+      This is a demo of the chat widget. The widget is loaded with the team ID "Fls9e8qMngIGfSaVVxLtf".<br>
+      You can customize the embed code for your own website by editing the AI_CHAT_TEAM_ID value.
+    </p>
   </body>
-</html> 
+</html>
